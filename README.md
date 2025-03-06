@@ -27,3 +27,47 @@ Dado o ponto de referência (x=20, y=10) indicado pelo receptor GPS, e uma dist�
 - Joalheria
 - Pub
 - Supermercado
+
+# Representação
+
+![image](https://github.com/user-attachments/assets/b74775f1-dc75-4ec1-bae5-538d54ba038e)
+
+
+O quadrado pontilhado se resumirá na query para o banco de dados através da busca baseada no ponto de interesse e na distância de 10 metros. Sendo assim, o x mínimo é = 10, o x máximo é igual a 30, o y mínimo é igual a 10 e o y máximo é igual a 20.
+
+Neste caso, a query retornará a churrascaria, porém, para o refinamento da distância máxima dentro de um raio de 10 metros, deve-se aplicar a seguinte fórmula:
+![image](https://github.com/user-attachments/assets/7c239185-a37c-4f73-95f9-067d3ccc8b6b)
+
+Com isso, somente os pontos de interesse serão retornados.
+
+# Instalação
+
+1 - Executar o projeto
+
+2 - Listar pontos de interesse
+```
+curl --request GET \
+  --url http://localhost:8080/points-of-interests \
+  --header 'content-type: application/json'
+```
+
+3 - Buscar pontos de interesse próximos
+```
+curl --request GET \
+  --url 'http://localhost:8080/near-me?x=20&y=10&dmax=6'
+```
+
+4 - Adicionar novos pontos de interesse
+
+```
+curl --request POST \
+  --url http://localhost:8080/points-of-interests \
+  --header 'content-type: application/json' \
+  --data '{
+  "name": "Mercado",
+  "x": 10,
+  "y": 0
+}'
+
+```
+
