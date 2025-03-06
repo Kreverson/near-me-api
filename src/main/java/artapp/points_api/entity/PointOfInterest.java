@@ -19,8 +19,7 @@ public class PointOfInterest {
     public PointOfInterest() {
     }
 
-    public PointOfInterest(Long id, String name, Long x, Long y) {
-        this.id = id;
+    public PointOfInterest(String name, Long x, Long y) {
         this.name = name;
         this.x = x;
         this.y = y;
